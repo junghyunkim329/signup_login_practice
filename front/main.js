@@ -86,14 +86,20 @@ window.addEventListener('DOMContentLoaded', () => {
     })
     .then(user => {
       const welcome = document.getElementById('welcome');
+      const content = document.querySelector('.content');
       if (welcome) welcome.innerText = `${user.name}님 환영합니다!`;
+      if (welcome) content.innerHTML = `
+          <h2>피라미드 찍기</h2>
+          <input type="number" id="num" placeholder="숫자를 입력하세요" />
+          <button onclick="p()">찍기</button>
+          <div id="pi"></div>
+        `;
+      
 
       // UI 처리
-      const signupLink = document.getElementById('signup-link');
       const loginLink = document.getElementById('login-link');
       const logoutLink = document.getElementById('logout-link');
 
-      if (signupLink) signupLink.style.display = 'none';
       if (loginLink) loginLink.style.display = 'none';
       if (logoutLink) logoutLink.style.display = 'inline';
     })
@@ -101,11 +107,9 @@ window.addEventListener('DOMContentLoaded', () => {
       const welcome = document.getElementById('welcome');
       if (welcome) welcome.innerText = '로그인이 필요합니다.';
 
-      const signupLink = document.getElementById('signup-link');
       const loginLink = document.getElementById('login-link');
       const logoutLink = document.getElementById('logout-link');
 
-      if (signupLink) signupLink.style.display = 'inline';
       if (loginLink) loginLink.style.display = 'inline';
       if (logoutLink) logoutLink.style.display = 'none';
     });

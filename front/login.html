@@ -8,22 +8,16 @@
     <title>로그인</title>
 </head>
 <body>
-    <nav class="nav">
-        <h1><a href="home.html">홈</a></h1>
-    </nav>
+    <button class="home" onclick="location.href='home.html'">홈</button>
     <div class="top">
         <h1>로그인</h1>
         <div class="put">
             <input type="text" id="login-id" class="input" placeholder="아이디" />
             <input type="password" id="login-pw" class="input" placeholder="비밀번호" />
-            <button onclick="logIn()">로그인</button>
+            <button class="button" onclick="logIn()">로그인</button>
         </div>
         <p>계정이 없으신가요? <a href="signup.html">회원가입</a></p>
-        <button onclick="logOut()">로그아웃</button>
-    </div>
-    <div class="content">
-        <h2 id="welcome"></h2>
-        <h2 id="happy"></h2>
+        <button class="button" id="logout-link" onclick="logOut()">로그아웃</button>
     </div>
 </body>
 </html>

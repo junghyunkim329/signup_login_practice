@@ -8,16 +8,14 @@
     <title>회원가입</title>
 </head>
 <body>
-    <nav class="nav">
-        <h1><a href="home.html">홈</a></h1>
-    </nav>
+    <button class="home" onclick="location.href='home.html'">홈</button>
     <div class="top">
         <h1>회원가입</h1>
         <div class="put">
-            <input type="text" id="signup-name" class="input" placeholder="이름" />
+            <input type="text" id="signup-name" class="input" placeholder="닉네임" />
             <input type="text" id="signup-id" class="input" placeholder="아이디" />
             <input type="password" id="signup-pw" class="input" placeholder="비밀번호" />
-            <button onclick="signUp()">회원가입</button>
+            <button class="button" onclick="signUp()">회원가입</button>
         </div>
         <p>이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
     </div>

@@ -8,18 +8,25 @@
     <title>홈홈</title>
 </head>
 <body>
-    <nav class="nav">
-        <h1><a href="home.html">홈</a></h1>
-        <ul>
-            <a href="signup.html">회원가입</a>
-            <a href="login.html">로그인</a>
-        </ul>
-    </nav>    
+    <header>
+        <button class="home" onclick="location.href='home.html'">홈</button>
+        <nav class="nav">
+            <button class="button" id="login-link" onclick="location.href='login.html'">로그인</button>
+            <button class="button" id="logout-link" onclick="logOut()">로그아웃</button>
+        </nav> 
+    </header>   
     <div class="top">
+        <div class="content">
+            <h2 class="welcome" id="welcome"></h2>
+        </div>
+        
+        <!-- 피라미드 만들기
         <input id="num" type="number" placeholder="숫자 입력">
         <button onclick="p()">만들기</button>
+        -->
     </div>
+    <!--
     <div class="pi" id="pi"></div>
-
+    -->
 </body>
 </html>
