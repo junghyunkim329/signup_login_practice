@@ -1,4 +1,4 @@
-// 피라미드 찍기 기능 (home.html에서 사용)
+// 피라미드
 function p() {
   const input = document.getElementById('num').value;
   const num = Number(input);
@@ -23,20 +23,20 @@ function signUp() {
     return;
   }
 
-  fetch('/signup', {
+  fetch('/signup', { // 회원가입 요청
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ id, pw, name })
+    body: JSON.stringify({ id, pw, name }) // JSON 형식으로 데이터 전송
   })
     .then(res => res.text())
     .then(msg => {
       alert(msg);
       if (msg.includes('성공')) {
-        window.location.href = 'login.html';
+        window.location.href = 'login.html'; // 회원가입 성공 시 로그인 페이지로 이동
       }
     })
     .catch(err => {
-      console.error(err);
+      console.error(err); // 콘솔에 오류 처리
       alert('회원가입 중 오류 발생');
     });
 }
@@ -46,7 +46,7 @@ function logIn() {
   const id = document.getElementById('login-id').value;
   const pw = document.getElementById('login-pw').value;
 
-  fetch('/login', {
+  fetch('/login', { // 로그인 요청
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ id, pw })
@@ -77,23 +77,27 @@ function logOut() {
     });
 }
 
-// 로그인 여부 확인 및 UI 표시 (home.html에서 사용)
+// 로그인 여부 확인 및 UI 표시
 window.addEventListener('DOMContentLoaded', () => {
-  fetch('/me')
+  fetch('/me') // 현재 로그인된 사용자 정보 요청
     .then(res => {
       if (!res.ok) throw new Error();
-      return res.json();
+      return res.json();  // 로그인된 사용자 정보 반환
     })
     .then(user => {
       const welcome = document.getElementById('welcome');
-      const content = document.querySelector('.content');
       if (welcome) welcome.innerText = `${user.name}님 환영합니다!`;
-      if (welcome) content.innerHTML = `
+
+      const content = document.querySelector('.content');
+      if (content) {
+        content.insertAdjacentHTML('beforeend', `
           <h2>피라미드 찍기</h2>
           <input type="number" id="num" placeholder="숫자를 입력하세요" />
           <button onclick="p()">찍기</button>
           <div id="pi"></div>
-        `;
+        `);
+      }
+
       
 
       // UI 처리
