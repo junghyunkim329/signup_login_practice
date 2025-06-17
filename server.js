@@ -1,14 +1,15 @@
-const mysql = require('mysql2'); // MySQL 사용을 위한 모듈
-const express = require('express'); // Express 웹 프레임워크
-const bcrypt = require('bcrypt'); // 비밀번호 암호화 모듈
+require('dotenv').config();
+const mysql = require('mysql2'); 
+const express = require('express'); 
+const bcrypt = require('bcrypt'); // 암호화
 const path = require('path'); // 경로 처리 유틸
-const session = require('express-session'); // 세션 관리 모듈
+const session = require('express-session'); // 세션 관리
 const app = express(); // Express 앱 생성
-const port = 3000; // 서버 포트 설정
+const port = 3000; 
 
 // 세션 설정: 로그인 상태 유지 (브라우저 종료 또는 만료 시 해제)
 app.use(session({
-  secret: 'my-secret-key', // 세션 암호화 키
+  secret: process.env.SESSION_SECRET, // 세션 암호화 키
   resave: false, // 매 요청마다 세션 저장 X
   saveUninitialized: false, // 초기화되지 않은 세션 저장 X
   cookie: { maxAge: 1000 * 60 * 30 } // 쿠키 유효시간: 30분
