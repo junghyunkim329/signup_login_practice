@@ -11,7 +11,7 @@ const port = 3000;
 app.use(session({
   secret: process.env.SESSION_SECRET, // 세션 암호화 키
   resave: false, // 매 요청마다 세션 저장 X
-  saveUninitialized: false, // 초기화되지 않은 세션 저장 X
+  saveUninitialized: true, // 초기화되지 않은 세션 저장 O
   cookie: { maxAge: 1000 * 60 * 30 } // 쿠키 유효시간: 30분
 }));
 
