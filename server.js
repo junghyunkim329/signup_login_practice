@@ -21,11 +21,13 @@ app.use(express.urlencoded({ extended: true })); // form 데이터 파싱
 app.use(express.static(path.join(__dirname, 'front'))); // front 폴더 정적 제공
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '1234',
-  database: 'kimjunghyun'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
 });
+
+module.exports = connection; // DB 연결 모듈화
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'front', 'home.html'));
